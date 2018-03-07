@@ -10,19 +10,22 @@ class Person {
       this.fname = fname,
       this.lname = lname
    }
-   personIdExist(id,personObject) {
-      // Purpose:    To determine if a person id exist.
-      // Parameter:  id: must be the key value or id
-      //             personObject: is the person opject that stores the StoredData
-      // Return:     True if id matchs
-      //             False if not match or miss match datatype
-
-      // Check if parameters are correct datatype
-      if (typeof personObject !== "object") {
-         return false
-      }
-      return (personObject.id === id)
+   static isPerson(obj) {
+      return obj.constructor === Person;
    }
+   // personIdExist(id,personObject) {
+   //    // Purpose:    To determine if a person id exist.
+   //    // Parameter:  id: must be the key value or id
+   //    //             personObject: is the person opject that stores the StoredData
+   //    // Return:     True if id matchs
+   //    //             False if not match or miss match datatype
+   //
+   //    // Check if parameters are correct datatype
+   //    if (typeof personObject !== "object") {
+   //       return false
+   //    }
+   //    return (personObject.id === id)
+   // }
 }
 
 // Manually populating a number of person object. But these object can be pulled from a datastore.
@@ -55,7 +58,7 @@ personList.findNodeItem(5);
 
 // This area finds a person based on the id in the list
 /////// Copy and Past the below section into the console. /////////////////////////
-personList.findNodeValue(person1.id, person1.personIdExist)
+personList.findNodeValue("id", person1.id)
 /////// Stop Selecting /////////////////////////
 
 // This area removes the node for a specific index.

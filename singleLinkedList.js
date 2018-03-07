@@ -80,7 +80,7 @@ class SingleLinkedList {
       return returnValue;
    }
 
-   findNodeValue(key, isMatchFn ) {
+   findNodeValue(key, searchValue ) {
       // Purpose:   Finds the specific key that is saved in StoredData and returns back the Index
       //            If no key is found it returns back zero
       //            If isMatchFn not a function or the list is zero retunr -1
@@ -95,13 +95,13 @@ class SingleLinkedList {
       let counterIndex = 1;
       let currentNode = this.head
 
-      if (typeof isMatchFn !== "function" || this.length === 0 ) {
+      if ( this.length === 0 ) {
          return -1
       }
 
       while (counterIndex <= this.length) {
-         if (isMatchFn(key,currentNode.data)) {
-            return counterIndex
+         if (currentNode.data[key] === searchValue) {
+            return currentNode.data
          } else {
             currentNode = currentNode.next
             counterIndex++
